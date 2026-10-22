@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://wgv4rldcwc16"]
+
+[ext_resource type="Script" uid="uid://hvgheiat4cr5" path="res://singleton/scene_transitions.gd" id="1_njacr"]
+
+[sub_resource type="Animation" id="Animation_njacr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer20/FadeToBlack:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_h6vyr"]
+resource_name = "scene_transition"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer20/FadeToBlack:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qejq6"]
+_data = {
+&"RESET": SubResource("Animation_njacr"),
+&"scene_transition": SubResource("Animation_h6vyr")
+}
+
+[node name="SceneTransitions" type="Node" unique_id=315420660]
+script = ExtResource("1_njacr")
+
+[node name="CanvasLayer20" type="CanvasLayer" parent="." unique_id=503322217]
+layer = 20
+
+[node name="FadeToBlack" type="ColorRect" parent="CanvasLayer20" unique_id=942457061]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=713245932]
+libraries/ = SubResource("AnimationLibrary_qejq6")

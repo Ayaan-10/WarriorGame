@@ -1,0 +1,333 @@
+[gd_scene format=3 uid="uid://xug0xhup4a4y"]
+
+[ext_resource type="Script" uid="uid://ceoojg2hc542q" path="res://scenes/minigame_1.gd" id="1_lmjug"]
+[ext_resource type="Texture2D" uid="uid://c4k6fomdcepdn" path="res://scenes/Textures/Papier6.png" id="1_og05i"]
+[ext_resource type="PackedScene" uid="uid://u3camget521u" path="res://scenes/player.tscn" id="2_og05i"]
+[ext_resource type="Script" uid="uid://d0afrisdkrdu5" path="res://scenes/coin.gd" id="4_fa05o"]
+[ext_resource type="Texture2D" uid="uid://bcla00ajj8tun" path="res://Coin.png" id="5_j1cg4"]
+[ext_resource type="PackedScene" uid="uid://djt83hntfivpt" path="res://themed_timer.tscn" id="6_j1cg4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nolv0"]
+size = Vector2(40, 40)
+
+[sub_resource type="Animation" id="Animation_1digs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(395, 477)]
+}
+
+[sub_resource type="Animation" id="Animation_00jeu"]
+resource_name = "moving_platform2"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(395, 477), Vector2(252, 477)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6n0yg"]
+_data = {
+&"RESET": SubResource("Animation_1digs"),
+&"moving_platform2": SubResource("Animation_00jeu")
+}
+
+[sub_resource type="Animation" id="Animation_r58ir"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(646, 412.00003)]
+}
+
+[sub_resource type="Animation" id="Animation_oxfl2"]
+resource_name = "platform_moving"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5000001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(646, 412.00003), Vector2(920, 412.00003)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1digs"]
+_data = {
+&"RESET": SubResource("Animation_r58ir"),
+&"platform_moving": SubResource("Animation_oxfl2")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nolv0"]
+radius = 110.11358
+
+[sub_resource type="Animation" id="Animation_j1cg4"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Coin:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xpvfh"]
+resource_name = "floating"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Coin:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -23), Vector2(0, -161)]
+}
+
+[sub_resource type="Animation" id="Animation_vc5od"]
+resource_name = "new_animation"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r58ir"]
+_data = {
+&"RESET": SubResource("Animation_j1cg4"),
+&"floating": SubResource("Animation_xpvfh"),
+&"new_animation": SubResource("Animation_vc5od")
+}
+
+[node name="Minigame_1" type="Node2D" unique_id=332177480]
+script = ExtResource("1_lmjug")
+
+[node name="ScrollingBackground" type="Parallax2D" parent="." unique_id=1951233912]
+scroll_offset = Vector2(-13, 0)
+repeat_size = Vector2(1000, 0)
+autoscroll = Vector2(100, 0)
+
+[node name="Background" type="TextureRect" parent="ScrollingBackground" unique_id=637290386]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.7682754, 0.42945734)
+texture = ExtResource("1_og05i")
+
+[node name="Platform1" type="StaticBody2D" parent="." unique_id=1817837174]
+position = Vector2(30.000004, 265)
+scale = Vector2(5.5488343, -0.49679843)
+
+[node name="ColorRect" type="ColorRect" parent="Platform1" unique_id=1899464451]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.093339495, 0.057008266, 0.0146969715, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform1" unique_id=1126555520]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_nolv0")
+
+[node name="Platform3" type="StaticBody2D" parent="." unique_id=1501941501]
+position = Vector2(30, 541)
+scale = Vector2(5.5488343, -0.49679843)
+
+[node name="ColorRect" type="ColorRect" parent="Platform3" unique_id=1994810157]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.093339495, 0.057008266, 0.0146969715, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3" unique_id=1284865662]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_nolv0")
+
+[node name="movingplatform1" type="StaticBody2D" parent="." unique_id=42654470]
+position = Vector2(395, 477)
+scale = Vector2(3.1153011, -0.6033621)
+
+[node name="ColorRect" type="ColorRect" parent="movingplatform1" unique_id=1139084650]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.093339495, 0.057008266, 0.0146969715, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="movingplatform1" unique_id=2104443072]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_nolv0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="movingplatform1" unique_id=1571475117]
+libraries/ = SubResource("AnimationLibrary_6n0yg")
+autoplay = &"moving_platform2"
+
+[node name="Platform2" type="StaticBody2D" parent="." unique_id=1976924396]
+position = Vector2(519, 445)
+scale = Vector2(3.1153011, -0.6033621)
+
+[node name="ColorRect" type="ColorRect" parent="Platform2" unique_id=2065658061]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.093339495, 0.057008266, 0.0146969715, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2" unique_id=1253412033]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_nolv0")
+
+[node name="movingplatform2" type="StaticBody2D" parent="." unique_id=1202817498]
+position = Vector2(646, 412.00003)
+scale = Vector2(5.5488343, -0.49679843)
+
+[node name="ColorRect" type="ColorRect" parent="movingplatform2" unique_id=127602144]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.093339495, 0.057008266, 0.0146969715, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="movingplatform2" unique_id=1522645798]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_nolv0")
+
+[node name="animation" type="AnimationPlayer" parent="movingplatform2" unique_id=160361084]
+libraries/ = SubResource("AnimationLibrary_1digs")
+autoplay = &"platform_moving"
+
+[node name="Player" parent="." unique_id=1305620920 instance=ExtResource("2_og05i")]
+position = Vector2(67.00001, 187)
+scale = Vector2(0.37094826, 0.37094826)
+
+[node name="Coin" type="Node2D" parent="." unique_id=1884625636]
+script = ExtResource("4_fa05o")
+
+[node name="Coin" type="TextureRect" parent="Coin" unique_id=1158264430]
+offset_left = 344.0
+offset_top = 412.0
+offset_right = 1044.0
+offset_bottom = 989.0
+scale = Vector2(0.09780028, 0.09780028)
+texture = ExtResource("5_j1cg4")
+
+[node name="Area2D" type="Area2D" parent="Coin" unique_id=1758130778]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin/Area2D" unique_id=576802527]
+position = Vector2(377.00003, 440.00003)
+scale = Vector2(0.25213578, 0.25213578)
+shape = SubResource("CircleShape2D_nolv0")
+
+[node name="animaiton" type="AnimationPlayer" parent="Coin" unique_id=1584761061]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_r58ir")
+autoplay = &"floating"
+
+[node name="Coin2" type="Node2D" parent="." unique_id=1023150292]
+position = Vector2(721, -109)
+script = ExtResource("4_fa05o")
+
+[node name="Coin" type="TextureRect" parent="Coin2" unique_id=1427498026]
+offset_left = 344.0
+offset_top = 412.0
+offset_right = 1044.0
+offset_bottom = 989.0
+scale = Vector2(0.09780028, 0.09780028)
+texture = ExtResource("5_j1cg4")
+
+[node name="Area2D" type="Area2D" parent="Coin2" unique_id=1796620694]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin2/Area2D" unique_id=1231080021]
+position = Vector2(377.00003, 440.00003)
+scale = Vector2(0.25213578, 0.25213578)
+shape = SubResource("CircleShape2D_nolv0")
+
+[node name="Coin3" type="Node2D" parent="." unique_id=1814046424]
+position = Vector2(207, 146)
+script = ExtResource("4_fa05o")
+
+[node name="Coin" type="TextureRect" parent="Coin3" unique_id=533752383]
+offset_left = 344.0
+offset_top = 412.0
+offset_right = 1044.0
+offset_bottom = 989.0
+scale = Vector2(0.09780028, 0.09780028)
+texture = ExtResource("5_j1cg4")
+
+[node name="Area2D" type="Area2D" parent="Coin3" unique_id=1485716252]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin3/Area2D" unique_id=808939724]
+position = Vector2(377.00003, 440.00003)
+scale = Vector2(0.25213578, 0.25213578)
+shape = SubResource("CircleShape2D_nolv0")
+
+[node name="Themed_Timer" parent="." unique_id=1298892110 instance=ExtResource("6_j1cg4")]
+position = Vector2(51, 34)
+
+[node name="Wall1" type="StaticBody2D" parent="." unique_id=1703765514]
+position = Vector2(-13, 0)
+rotation = 1.5707964
+scale = Vector2(16.26627, -0.389562)
+
+[node name="ColorRect" type="ColorRect" parent="Wall1" unique_id=724920765]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.093339495, 0.057008266, 0.0146969715, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall1" unique_id=739028993]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_nolv0")
+
+[node name="Wall2" type="StaticBody2D" parent="." unique_id=1271851405]
+position = Vector2(1139, 0)
+rotation = 1.5707964
+scale = Vector2(16.26627, -0.389562)
+
+[node name="ColorRect" type="ColorRect" parent="Wall2" unique_id=752382491]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.093339495, 0.057008266, 0.0146969715, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2" unique_id=44795512]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_nolv0")
+
+[node name="Base" type="StaticBody2D" parent="." unique_id=434438801]
+position = Vector2(-4, 619)
+scale = Vector2(29.040993, 0.68868065)
+
+[node name="ColorRect" type="ColorRect" parent="Base" unique_id=291111883]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.093339495, 0.057008266, 0.0146969715, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Base" unique_id=1780730011]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_nolv0")
+
+[connection signal="coin_collected" from="Coin" to="." method="_on_coin_coin_collected"]
+[connection signal="coin_collected" from="Coin2" to="." method="_on_coin_coin_collected"]
+[connection signal="coin_collected" from="Coin3" to="." method="_on_coin_coin_collected"]
+
+[editable path="Player"]
