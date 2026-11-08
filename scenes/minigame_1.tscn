@@ -60,11 +60,11 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(646, 412.00003)]
+"values": [Vector2(644, 477)]
 }
 
 [sub_resource type="Animation" id="Animation_oxfl2"]
-resource_name = "platform_moving"
+resource_name = "movingplatform"
 length = 4.0
 loop_mode = 1
 tracks/0/type = "value"
@@ -74,16 +74,16 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5000001),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(646, 412.00003), Vector2(920, 412.00003)]
+"values": [Vector2(644, 477), Vector2(1014, 477)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1digs"]
 _data = {
 &"RESET": SubResource("Animation_r58ir"),
-&"platform_moving": SubResource("Animation_oxfl2")
+&"movingplatform": SubResource("Animation_oxfl2")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nolv0"]
@@ -145,7 +145,7 @@ scale = Vector2(0.7682754, 0.42945734)
 texture = ExtResource("1_og05i")
 
 [node name="Platform1" type="StaticBody2D" parent="." unique_id=1817837174]
-position = Vector2(30.000004, 265)
+position = Vector2(1.9073486e-06, 265)
 scale = Vector2(5.5488343, -0.49679843)
 
 [node name="ColorRect" type="ColorRect" parent="Platform1" unique_id=1899464451]
@@ -157,16 +157,42 @@ color = Color(0.093339495, 0.057008266, 0.0146969715, 1)
 position = Vector2(20, 20)
 shape = SubResource("RectangleShape2D_nolv0")
 
-[node name="Platform3" type="StaticBody2D" parent="." unique_id=1501941501]
-position = Vector2(30, 541)
-scale = Vector2(5.5488343, -0.49679843)
+[node name="stairs2" type="StaticBody2D" parent="." unique_id=1501941501]
+position = Vector2(203, 587)
+scale = Vector2(1.6409743, -0.66734457)
 
-[node name="ColorRect" type="ColorRect" parent="Platform3" unique_id=1994810157]
+[node name="ColorRect" type="ColorRect" parent="stairs2" unique_id=1994810157]
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0.093339495, 0.057008266, 0.0146969715, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3" unique_id=1284865662]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stairs2" unique_id=1284865662]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_nolv0")
+
+[node name="stairs1" type="StaticBody2D" parent="." unique_id=730905819]
+position = Vector2(269, 615)
+scale = Vector2(1.6409743, -0.66734457)
+
+[node name="ColorRect" type="ColorRect" parent="stairs1" unique_id=2016796680]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.093339495, 0.057008266, 0.0146969715, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stairs1" unique_id=198553502]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_nolv0")
+
+[node name="stairs3" type="StaticBody2D" parent="." unique_id=11677757]
+position = Vector2(0, 558)
+scale = Vector2(5.0229206, -0.5477243)
+
+[node name="ColorRect" type="ColorRect" parent="stairs3" unique_id=1736740505]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.093339495, 0.057008266, 0.0146969715, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stairs3" unique_id=1787823915]
 position = Vector2(20, 20)
 shape = SubResource("RectangleShape2D_nolv0")
 
@@ -187,6 +213,23 @@ shape = SubResource("RectangleShape2D_nolv0")
 libraries/ = SubResource("AnimationLibrary_6n0yg")
 autoplay = &"moving_platform2"
 
+[node name="movingplatform2" type="StaticBody2D" parent="." unique_id=1030811950]
+position = Vector2(644, 477)
+scale = Vector2(3.1153011, -0.6033621)
+
+[node name="ColorRect" type="ColorRect" parent="movingplatform2" unique_id=1517222362]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.093339495, 0.057008266, 0.0146969715, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="movingplatform2" unique_id=798258911]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_nolv0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="movingplatform2" unique_id=1647115713]
+libraries/ = SubResource("AnimationLibrary_1digs")
+autoplay = &"movingplatform"
+
 [node name="Platform2" type="StaticBody2D" parent="." unique_id=1976924396]
 position = Vector2(519, 445)
 scale = Vector2(3.1153011, -0.6033621)
@@ -199,23 +242,6 @@ color = Color(0.093339495, 0.057008266, 0.0146969715, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2" unique_id=1253412033]
 position = Vector2(20, 20)
 shape = SubResource("RectangleShape2D_nolv0")
-
-[node name="movingplatform2" type="StaticBody2D" parent="." unique_id=1202817498]
-position = Vector2(646, 412.00003)
-scale = Vector2(5.5488343, -0.49679843)
-
-[node name="ColorRect" type="ColorRect" parent="movingplatform2" unique_id=127602144]
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(0.093339495, 0.057008266, 0.0146969715, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="movingplatform2" unique_id=1522645798]
-position = Vector2(20, 20)
-shape = SubResource("RectangleShape2D_nolv0")
-
-[node name="animation" type="AnimationPlayer" parent="movingplatform2" unique_id=160361084]
-libraries/ = SubResource("AnimationLibrary_1digs")
-autoplay = &"platform_moving"
 
 [node name="Player" parent="." unique_id=1305620920 instance=ExtResource("2_og05i")]
 position = Vector2(67.00001, 187)

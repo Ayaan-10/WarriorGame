@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://bhjwsyhslnncu"]
+
+[ext_resource type="Script" uid="uid://dwl8h8rh2apvm" path="res://scenes/done_screen.gd" id="1_mqh5l"]
+[ext_resource type="Texture2D" uid="uid://bevjec6jlnudi" path="res://WarioWare The Warrior(8).png" id="2_7ns25"]
+[ext_resource type="FontFile" uid="uid://ca0teuppud505" path="res://CabinSketch-Regular.ttf" id="3_gwety"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t6dg5"]
+bg_color = Color(0.17641908, 0.17641911, 0.17641899, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 20.0
+expand_margin_right = 20.0
+shadow_color = Color(0.07450981, 0.07058824, 0.07058824, 0.4862745)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_deqd5"]
+bg_color = Color(0.31061733, 0.31061703, 0.31061718, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 20.0
+expand_margin_right = 20.0
+shadow_color = Color(0.07450981, 0.07058824, 0.07058824, 0.4862745)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5lftu"]
+bg_color = Color(0.23392558, 0.2339254, 0.23392543, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 20.0
+expand_margin_right = 20.0
+shadow_color = Color(0.07450981, 0.07058824, 0.07058824, 0.4862745)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.5)
+
+[node name="DeathScreen" type="Node2D" unique_id=1959608646]
+script = ExtResource("1_mqh5l")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1623724069]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.1035156e-05
+offset_top = -6.1035156e-05
+offset_right = 1366.0
+offset_bottom = 767.99994
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.84330136, 0.84330136)
+texture = ExtResource("2_7ns25")
+
+[node name="Label" type="Label" parent="." unique_id=589778818]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 243.0
+offset_top = 186.0
+offset_right = 902.0
+offset_bottom = 262.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.0885599, 0.0885599, 0.0885599, 1)
+theme_override_fonts/font = ExtResource("3_gwety")
+theme_override_font_sizes/font_size = 64
+text = "Out of hearts! Try again"
+
+[node name="PlayAgain" type="Button" parent="." unique_id=1101502213]
+offset_left = 182.0
+offset_top = 320.0
+offset_right = 452.0
+offset_bottom = 391.0
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_gwety")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_t6dg5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_deqd5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5lftu")
+text = "Try Again"
+
+[node name="MainMenu" type="Button" parent="." unique_id=688173297]
+offset_left = 693.0
+offset_top = 320.0
+offset_right = 978.0
+offset_bottom = 391.0
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("3_gwety")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_t6dg5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_deqd5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5lftu")
+text = "Main Menu
+"
+
+[connection signal="pressed" from="PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]

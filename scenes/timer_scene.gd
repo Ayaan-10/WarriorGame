@@ -12,11 +12,14 @@ var time
 var current_level: int # 1
 
 func _ready() -> void:
+	if Global.lives <= 0:
+		get_tree().change_scene_to_file("res://scenes/death_screen.tscn")
+		return
 	current_level = Global.minigames_done + 1 # 2. Lock it in right when the scene loads!
 	SceneTransitions.fade_in()
 	await Timer(3.0) # using the function created
 	
-	if Global.minigames_done < 3: # if you havent completed 3 minigames yet 
+	if Global.minigames_done < 2: # if you havent completed 3 minigames yet 
 		Global.minigames_done = Global.minigames_done +1
 		SceneTransitions.fade_out()
 		
@@ -31,8 +34,8 @@ func _ready() -> void:
 # should be next. Make sure you name your minigame saves appropriately.
 
 	else:
-		get_tree().change_scene_to_file("res://scenes/title_screen.tscn") # changes your scene
-	
+		get_tree().change_scene_to_file("res://scenes/done_screen.tscn") # changes your scene
+
 
 func _process(delta: float) -> void: # runs EVERY FRAME
 	match Global.lives: # asks or checks if lives is equal to one of 
